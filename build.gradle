@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+    id 'org.cadixdev.licenser'
+}
+
+group 'com.nhackindustries'
+version '1.0'
+
+license {
+    header this.project.file('LICENSE')
+    include '**/*.java'
+}
+afterEvaluate {
+    compileJava.dependsOn licenseFormat
+}

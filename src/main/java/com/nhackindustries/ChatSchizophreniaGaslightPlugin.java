@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Nerds Inc and/or its affiliates. All rights reserved.
+ * Copyright (C) 2022 Nerds Inc and/or its affiliates. All rights reserved.
  */
 
 package com.nhackindustries;

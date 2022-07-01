@@ -4,10 +4,9 @@
 
 package com.nhackindustries;
 
-import net.futureclient.headless.eventbus.IListener;
 import net.futureclient.headless.eventbus.SubscribeEvent;
 import net.futureclient.headless.eventbus.events.TickEvent;
-import net.futureclient.headless.plugin.IPlugin;
+import net.futureclient.headless.plugin.Plugin;
 import net.minecraft.client.entity.EntityPlayerSP;
 
 import java.security.SecureRandom;
@@ -15,8 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-@IPlugin.Metadata(name = "ChatSchizophreniaGaslight", version = "1.0")
-public final class ChatSchizophreniaGaslightPlugin implements IPlugin, IListener {
+@Plugin.Metadata(name = "ChatSchizophreniaGaslight", version = "1.0")
+public final class ChatSchizophreniaGaslightPlugin implements Plugin {
     private static final UUID XZ_9_UUID = UUID.fromString("2EE704B1-1F48-4065-93E6-A91E8AB6AE19"); // the king
     private static final long SEND_RATE = TimeUnit.MINUTES.toMillis(10L);
 
@@ -51,13 +50,13 @@ public final class ChatSchizophreniaGaslightPlugin implements IPlugin, IListener
     private long lastSent;
 
     @Override
-    public void onEnable(final IPluginContext ctx) {
-        ctx.getEventBus().register(this);
+    public void onEnable(final PluginContext ctx) {
+        ctx.subscribers().register(this);
     }
 
     @Override
-    public void onDisable(final IPluginContext ctx) {
-        ctx.getEventBus().unregister(this);
+    public void onDisable(final PluginContext ctx) {
+        ctx.subscribers().unregister(this);
     }
 
     @SubscribeEvent
